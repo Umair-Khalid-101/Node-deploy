@@ -9,6 +9,7 @@ const connectionUrl = process.env.CONNECTION_URL
 
 app.use(express.json());
 app.use(cors)
+app.use("/", router)
 
 // MODEL
 const userSchema = new mongoose.Schema({
@@ -40,7 +41,6 @@ router.get('/users', async(req, res, next) => {
     }
 })
 
-app.use("/", router)
 
 mongoose.connect(connectionUrl).then(()=>{
     console.log("Connected to MongoDB")
